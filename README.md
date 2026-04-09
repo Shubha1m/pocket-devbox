@@ -823,6 +823,45 @@ git config --global user.email "your-email@example.com"
 
 Use the same email associated with your GitHub account.
 
+### 11.6 Set up ssh-agent (Required if you set a passphrase)
+
+> **Skip this step** if you did NOT set a passphrase on your Git SSH key in step 11.1.
+
+If your Git SSH key has a passphrase, Claude Code won't be able to `git push` — it can't enter the passphrase interactively. You'll see this error:
+
+```
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+```
+
+**Fix:** Start `ssh-agent` and load your key before launching Claude Code:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+# Enter your passphrase when prompted
+```
+
+Now the agent holds your key in memory for the rest of the session. Claude Code can push/pull without being asked for the passphrase.
+
+**Do this every time** before starting Claude Code, or add the agent to your `.bashrc` so it starts automatically:
+
+```bash
+echo 'eval "$(ssh-agent -s)" > /dev/null 2>&1' >> ~/.bashrc
+```
+
+You'll still need to run `ssh-add ~/.ssh/id_ed25519` once per session (and enter the passphrase), but the agent will already be running.
+
+**The workflow becomes:**
+
+```bash
+ssh phone
+proot-distro login ubuntu
+ssh-add ~/.ssh/id_ed25519     # Enter passphrase once
+cd ~/projects/my-repo
+claude                         # Claude Code can now git push freely
+```
+
 ---
 
 ## Phase 12: Clone Repos & Work (On Phone via SSH)
