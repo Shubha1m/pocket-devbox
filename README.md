@@ -24,7 +24,7 @@ This is a battle-tested, step-by-step guide for turning any Android phone into a
 - [Phase 12: Clone Repos & Work (On Phone via SSH)](#phase-12-clone-repos--work-on-phone-via-ssh)
 - [Phase 13: Adding More Devices](#phase-13-adding-more-devices)
 - [Why Git and Not SSHFS / Folder Mounting](#why-git-and-not-sshfs--folder-mounting)
-- [Errors We Hit & How We Fixed Them](#errors-we-hit--how-we-fixed-them)
+- [Errors I Hit & How I Fixed Them](#errors-i-hit--how-i-fixed-them)
 - [Important Gotchas](#important-gotchas)
 - [Daily Workflow](#daily-workflow)
 - [Post-Setup Hardening Checklist](#post-setup-hardening-checklist)
@@ -111,7 +111,7 @@ Everything in this phase happens directly on the phone screen.
 
 Download and install Termux from the [Play Store](https://play.google.com/store/apps/details?id=com.termux) or from [F-Droid](https://f-droid.org/en/packages/com.termux/). Either works.
 
-> **Note:** Some guides warn against the Play Store version. In our setup, the Play Store version worked fine.
+> **Note:** Some guides warn against the Play Store version. In my setup, the Play Store version worked fine.
 
 Open Termux. You'll see a terminal with a `~ $` prompt.
 
@@ -160,7 +160,7 @@ You might see a warning:
 ```
 Warning: CPU doesn't support 32-bit instructions, some software may not work.
 ```
-This is normal on ARM64 — ignore it. It just means 32-bit x86 software won't run, which doesn't affect anything we're doing.
+This is normal on ARM64 — ignore it. It just means 32-bit x86 software won't run, which doesn't affect anything I'm doing.
 
 ### 1.5 Update Ubuntu
 
@@ -201,7 +201,7 @@ node --version   # Expected: v20.x.x
 npm --version    # Expected: 10.x.x
 ```
 
-**Actual output from our setup:**
+**Actual output from my setup:**
 ```
 v20.20.2
 10.8.2
@@ -284,7 +284,7 @@ sshd
 
 **No output means success.** If sshd starts correctly, it prints nothing. Termux runs sshd on **port 8022** (not the standard 22).
 
-You may see a message about `sv-enable sshd` — that's for auto-start, which we'll configure later.
+You may see a message about `sv-enable sshd` — that's for auto-start, which I'll configure later.
 
 ### 3.4 Validate Phase 3
 
@@ -327,7 +327,7 @@ Sign in with the **same account** you used on the phone.
 > ```bash
 > brew install --cask tailscale
 > ```
-> We initially installed via `brew install tailscale` (the CLI version) but switched to the App Store version for the menu bar UI. If you want to switch:
+> I initially installed via `brew install tailscale` (the CLI version) but switched to the App Store version for the menu bar UI. If you want to switch:
 > ```bash
 > brew uninstall tailscale
 > ```
@@ -540,7 +540,7 @@ sshd
 ```
 No output means it started successfully. Then try SSH from your Mac again.
 
-This happened in our setup because `pkill sshd` killed the daemon but the `&& sshd` part didn't reliably execute after the session dropped.
+This happened in my setup because `pkill sshd` killed the daemon but the `&& sshd` part didn't reliably execute after the session dropped.
 
 ### 7.4 Verify key auth still works
 
@@ -879,7 +879,7 @@ cd ~/projects
 git clone git@github.com:<your-username>/<repo-name>.git
 ```
 
-**Example from our setup:**
+**Example from my setup:**
 ```bash
 git clone git@github.com:<your-github-username>/learning-pydantic-ai.git
 ```
@@ -988,9 +988,9 @@ For each new device you add:
 
 ## Why Git and Not SSHFS / Folder Mounting
 
-We initially tried mounting the Mac's folder onto the phone using SSHFS so Claude Code could edit Mac files directly. Here's why that didn't work and why Git is better:
+I initially tried mounting the Mac's folder onto the phone using SSHFS so Claude Code could edit Mac files directly. Here's why that didn't work and why Git is better:
 
-### What we tried
+### What I tried
 
 **SSHFS inside proot Ubuntu:**
 ```bash
@@ -1036,7 +1036,7 @@ Even if SSHFS had worked, it would have these problems:
 
 ---
 
-## Errors We Hit & How We Fixed Them
+## Errors I Hit & How I Fixed Them
 
 ### Error: `unknown distribution 'ubunto'`
 
