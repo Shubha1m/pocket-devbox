@@ -46,14 +46,14 @@ This is a battle-tested, step-by-step guide for turning any Android phone into a
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Your Mac (Thin Client)                │
-│                  Terminal / Termius / VS Code            │
+│                    Your Mac (Thin Client)               │
+│                  Terminal / Termius / VS Code           │
 └──────────────┬──────────────────────────────────────────┘
                │
                │  SSH (AES-256 encrypted, port 8022)
                │  Key-only auth (password disabled)
                │
-       ┌───────┴────────┐
+       ┌───────┴────────-┐
        │  Tailscale      │
        │  WireGuard      │
        │  Encrypted      │
@@ -63,7 +63,7 @@ This is a battle-tested, step-by-step guide for turning any Android phone into a
        └───────┬─────────┘
                │
 ┌──────────────┴──────────────────────────────────────────┐
-│              Android Phone (Server)                      │
+│              Android Phone (Server)                     │
 │              Tailscale IP: 100.x.x.x                    │
 │                                                         │
 │  ┌─────────────────────────────────────────────────┐    │
