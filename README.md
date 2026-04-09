@@ -1,6 +1,6 @@
-# Galaxy S26 Ultra — Always-On Claude Code Server: Complete Setup Guide
+# pocket-devbox — Turn Your Android Phone into an Always-On Claude Code Server
 
-This is a battle-tested, step-by-step guide for turning a Galaxy S26 Ultra into a dedicated Claude Code server you can SSH into from your Mac — from anywhere in the world. Written from a real setup session, including every error hit and how it was resolved.
+This is a battle-tested, step-by-step guide for turning any Android phone into a dedicated Claude Code server you can SSH into from any computer — from anywhere in the world. Written from a real setup session, including every error hit and how it was resolved.
 
 ---
 
@@ -34,7 +34,7 @@ This is a battle-tested, step-by-step guide for turning a Galaxy S26 Ultra into 
 
 ## Overview
 
-**What this does:** Your Galaxy S26 Ultra runs Termux → proot Ubuntu → Node.js → Claude Code. You SSH into it from your Mac (or any device). Your Mac is just a thin client displaying text. Claude Code runs entirely on the phone.
+**What this does:** Your Android phone runs Termux → proot Ubuntu → Node.js → Claude Code. You SSH into it from your Mac (or any device). Your Mac is just a thin client displaying text. Claude Code runs entirely on the phone.
 
 **Why:** Free ARM server with unlimited bandwidth. No monthly VPS costs. Works from anywhere via Tailscale. Your Mac saves battery since it's only rendering terminal text.
 
@@ -63,7 +63,7 @@ This is a battle-tested, step-by-step guide for turning a Galaxy S26 Ultra into 
        └───────┬─────────┘
                │
 ┌──────────────┴──────────────────────────────────────────┐
-│              Galaxy S26 Ultra (Server)                   │
+│              Android Phone (Server)                      │
 │              Tailscale IP: 100.x.x.x                    │
 │                                                         │
 │  ┌─────────────────────────────────────────────────┐    │
@@ -95,11 +95,11 @@ This is a battle-tested, step-by-step guide for turning a Galaxy S26 Ultra into 
 
 | Item | Details |
 |------|---------|
-| Galaxy S26 Ultra | Any storage variant. Keep plugged in with battery protection at 85%. |
+| Android phone | Any modern Android phone (ARM64). Keep plugged in with battery protection enabled. |
 | Mac | Any Mac with Terminal. |
 | Tailscale account | Free at tailscale.com. Same account on both devices. |
 | Claude account | Claude Pro, Max, or Teams for Claude Code access. |
-| F-Droid | For installing Termux (Play Store version is outdated and broken). Download from https://f-droid.org |
+| Termux | Install from the Play Store or F-Droid. Both work — Play Store is easier. |
 
 ---
 
@@ -109,9 +109,9 @@ Everything in this phase happens directly on the phone screen.
 
 ### 1.1 Install Termux
 
-Download and install Termux from F-Droid: https://f-droid.org/en/packages/com.termux/
+Download and install Termux from the [Play Store](https://play.google.com/store/apps/details?id=com.termux) or from [F-Droid](https://f-droid.org/en/packages/com.termux/). Either works.
 
-**Do NOT use the Play Store version** — it's outdated and missing critical updates.
+> **Note:** Some guides warn against the Play Store version. In our setup, the Play Store version worked fine.
 
 Open Termux. You'll see a terminal with a `~ $` prompt.
 
